@@ -1,0 +1,9 @@
+// /app/api/posts/route.ts (หรือ /pages/api/posts.ts ถ้าใช้ pages)
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+export async function GET() {
+  const posts = await prisma.post.findMany();
+  return Response.json(posts);
+}
